@@ -38,7 +38,7 @@ from .schemas import (
 )
 
 _LOGGER = logging.getLogger(__name__)
-
+WAIT_REFRESH_AFTER_COMMAND = 1
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
@@ -210,7 +210,8 @@ class RamsesRemote(RamsesEntity, RemoteEntity):
             if x != 0:
                 await asyncio.sleep(delay_secs)
             self._broker.client.send_cmd(cmd, priority=Priority.HIGH)
-
+        
+        await asyncio.sleep(WAIT_REFRESH_AFTER_COMMAND)
         await self._broker.async_update()
 
 
