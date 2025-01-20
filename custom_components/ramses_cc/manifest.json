@@ -8,7 +8,7 @@
     "loggers": ["ramses_rf"],
     "requirements": [
       "pyserial-asyncio-fast>=0.13",
-      "ramses-rf==0.50.0"
+      "ramses-rf@git+https://github.com/cesans/ramses_rf.git@master"
     ],
     "config_flow": true,
     "single_config_entry": true,
